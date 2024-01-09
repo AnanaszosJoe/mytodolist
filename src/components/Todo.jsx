@@ -6,21 +6,31 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteTodo, toggleDone } from '../utils';
+import CreateIcon from '@mui/icons-material/Create';
 
 export const Todo = ({id, desc, done}) => {
 
+  console.log(id);
 
 return (
           <ListItem
             key={id}
             secondaryAction={
+              <>
               <IconButton edge="end" aria-label="comments">
+                <CreateIcon sx={{color:'blue'}} />
+              </IconButton>
+              <IconButton edge="end" aria-label="comments"
+              onClick={()=>deleteTodo(id)}>
                 <DeleteIcon sx={{color:'red'}} />
               </IconButton>
+              </>
             }
             disablePadding
           >
-            <ListItemButton role={undefined} dense>
+            <ListItemButton role={undefined} dense
+            onClick={()=>toggleDone(id,!done)}>
               <ListItemIcon>
                 <Checkbox
                   edge="start"

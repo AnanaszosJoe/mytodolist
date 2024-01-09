@@ -1,0 +1,23 @@
+.app{
+    max-width: 330px;
+    margin: 5px auto;
+    box-shadow: 0 0 5px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    background: white;
+
+}
+
+h1{
+    text-align: center;
+}
+body{
+    background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    min-height: 100vh;
+}
+.addNewTodo{
+    display: flex;
+    align-items: center;
+}
