@@ -8,17 +8,23 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteTodo, toggleDone } from '../utils';
 import CreateIcon from '@mui/icons-material/Create';
+import { EditTodo } from './EditTodo';
 
 export const Todo = ({id, desc, done}) => {
+  
+  const [open, setOpen] = React.useState(false);
 
-  console.log(id);
+  //console.log(id);
 
 return (
+  <>
           <ListItem
             key={id}
             secondaryAction={
               <>
-              <IconButton edge="end" aria-label="comments">
+              <IconButton edge="end" aria-label="comments"
+              onClick={()=>setOpen(true)}
+              >
                 <CreateIcon sx={{color:'blue'}} />
               </IconButton>
               <IconButton edge="end" aria-label="comments"
@@ -43,6 +49,8 @@ return (
               <ListItemText id={id} primary={desc} />
             </ListItemButton>
           </ListItem>
+          {open && <EditTodo open={open} setOpen={setOpen} id={id} desc={desc} />}
+          </>
         );
      
 }

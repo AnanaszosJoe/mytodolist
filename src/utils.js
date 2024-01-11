@@ -7,9 +7,9 @@ export const readTodos = (setTodos) => {
     
     const todolistRef = collection(db,'mytodolist')
     const q=query(todolistRef, orderBy('timestamp', 'desc'))
-    onSnapshot(todolistRef, (snapshot)=>{
+    onSnapshot(q, (snapshot)=>{
         setTodos(snapshot.docs.map((doc)=>({...doc.data(),id:doc.id})))
-        console.log(snapshot.docs);
+        //console.log(snapshot.docs);
     })
 }
 
@@ -35,6 +35,11 @@ export const signOutUser = async() => {
 export const toggleDone = async (id, done) =>{
     const docRef = doc(db, 'mytodolist', id)
     await updateDoc(docRef, {done})
+}
+
+export const updateTodo = async (id, desc) =>{
+    const docRef = doc(db, 'mytodolist', id)
+    await updateDoc(docRef, {desc})
 }
 
 export const addingNewTodo = async (newTodo) => {
